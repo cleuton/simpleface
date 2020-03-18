@@ -20,10 +20,10 @@ Clone this repository! If you have [**Anaconda**](https://anaconda.org/) just cr
 conda env create -f newHogEnv.yml
 ``
 
-To test just run the program [**pythonfaces.py**](./ pythonfaces.py):
+To test just run the program [**pythonfaces.py**](./pythonfaces.py):
 
 ``
-python pythonfaces.py |imagem.jpg|
+python pythonfaces.py |image.jpg|
 ``
 
 It has two other parameters:
@@ -63,4 +63,4 @@ The parameters are:
 
 These models came from the original OpenCV project on Github.
 
-See the code for [**pythonfaces.py**](./ pythonfaces.py) for other functions.
+See the code for [**pythonfaces.py**](./pythonfaces.py) for other functions.
