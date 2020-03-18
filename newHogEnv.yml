@@ -1,0 +1,10 @@
+name: hog_opencv
+dependencies:
+  - pip
+  - python=3.6
+  - pip:
+    - numpy
+    - opencv-python
+
+
+
