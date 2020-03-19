@@ -12,6 +12,8 @@ Many people, including me, use a combination of libraries to work on the images,
 
 OpenCV is more than capable of doing everything that is needed in an image processing pipeline, such as: **detect faces**, **align faces** and **extract faces**, also known as **Face Chips**.
 
+The function has been optimized to detect the eyes with greater precision. It was detecting the nostrils incorrectly, but I made a calculation with the average of the size of the eyes and it's ok now.
+
 ## Installation
 
 Clone this repository! If you have [**Anaconda**](https://anaconda.org/) just create an environment with the attached file:

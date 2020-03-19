@@ -93,12 +93,30 @@ def detectFaces(img, img_h=64,img_w=64,face_cascade_file=FACE_CASCADE_FILE,eye_c
         img = cv2.ellipse(img, center, (w//2, h//2), 0, 0, 360, (255, 0, 255), 4)
         faceROI = finalImage[y:y+h,x:x+w]
         eyes = eyes_cascade.detectMultiScale(faceROI)
-        eye_centers=[]
+        detected_eyes=[]
+        eye_sum=0.0
+        i=0
         for (x2,y2,w2,h2) in eyes:
+            i=i+1
             eye_center = (x + x2 + w2//2, y + y2 + h2//2)
-            eye_centers.append(eye_center)
-            radius = int(round((w2 + h2)*0.25))
-            img = cv2.circle(img, eye_center, radius, (255, 0, 0 ), 4)    
+            eye_size = w2 * h2
+            eye_sum = eye_sum + eye_size
+            print("size:",eye_size)
+            detected_eyes.append((eye_center,eye_size,(x2,y2,w2,h2)))
+
+        # Now we have to be sure that we are processing just eyes
+        eye_average = eye_sum / i
+        eye_centers=[]
+        print("Average:",eye_average)
+        half_average=eye_average / 2
+        for eye in detected_eyes:
+            print("one eye:",eye[1])
+            if eye[1] >= half_average:
+                eye_centers.append(eye[0])
+                print("eye ok:",eye_centers)
+                x2,y2,w2,h2 = eye[2]
+                radius = int(round((w2 + h2)*0.25))
+                img = cv2.circle(img, eye[0], radius, (255, 0, 0 ), 4)  
         rotation_matrix = get_rotation_matrix(eye_centers[0], eye_centers[1])
         rotated = cv2.warpAffine(finalImage, rotation_matrix, (s_height, s_width), flags=cv2.INTER_CUBIC)
         cropped = crop_image(rotated, (x,y,w+x,h+y))      

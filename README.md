@@ -14,6 +14,8 @@ Muita gente, inclusive eu, utiliza uma combinação de bibliotecas para trabalha
 
 A OpenCV é mais do que capaz de fazer tudo o que é preciso em um pipeline de processamento de imagens, como: **detetar rostos**, **alinhar rostos** e **extrair rostos**, também conhecidos como **Face Chips**.
 
+A função foi otimizada para detectar os olhos com maior precisão. Antes, poderia detectar incorretamente as narinas, mas fiz um cálculo com a média do tamanho dos olhos e ficou bom. 
+
 ## Instalação
 
 Clone este repositório! Se você tiver o [**Anaconda**](https://anaconda.org/) basta criar um ambiente com o arquivo anexo: 
